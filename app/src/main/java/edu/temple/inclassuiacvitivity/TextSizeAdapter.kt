@@ -24,6 +24,7 @@ class TextSizeAdapter(_context : Context, _numberArray :  Array<Int>) : BaseAdap
         return numberArray[position].toLong()
     }
 
+    //When the item is selected (in-view)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val textView : TextView
         //To ensure that resources are used efficiently, we can recycle the view
@@ -44,11 +45,13 @@ class TextSizeAdapter(_context : Context, _numberArray :  Array<Int>) : BaseAdap
         return textView
     }
 
+    //The dropdown items
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
         return super.getDropDownView(position, convertView, parent).apply{
             if (convertView is TextView){
                 convertView.textSize = numberArray[position].toFloat()
             }
+            //(this as TextView).textSize = numberArrat[position].toFloat()
         }
 
     }
